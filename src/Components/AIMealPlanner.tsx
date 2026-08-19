@@ -8,10 +8,8 @@ import {
     Description,
     Input,
     Label,
-    ListBox,
     Radio,
     RadioGroup,
-    Select,
     Separator,
     TextArea,
 } from "@heroui/react";
@@ -190,6 +188,8 @@ function FieldLabel({
 }
 
 export function AIMealPlanner() {
+    const TEMP_USER_ID = "507f1f77bcf86cd799439011"; // TODO: Remove fake userId after auth implementation
+
     const [profile, setProfile] = useState<UserProfileData>(
         EMPTY_FORM.profile,
     );
@@ -202,7 +202,7 @@ export function AIMealPlanner() {
     );
     const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
-    const handleGenerate = useCallback(() => {
+    const handleGenerate = useCallback(async () => {
         const errors: string[] = [];
 
         if (!profile.age || profile.age < 1) {
@@ -260,10 +260,40 @@ export function AIMealPlanner() {
             structure,
         };
 
-        console.log(
-            "Meal Planner user input:",
-            JSON.stringify(formData, null, 2),
-        );
+        const payload = {
+            userId: TEMP_USER_ID,
+            ...formData,
+        };
+
+
+        try {
+            const response = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/meal-charts`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error("Failed to save meal plan");
+            }
+
+            toast.success("Meal planner data saved successfully!");
+
+            console.log("Saved meal plan:");
+        } catch (error) {
+            console.error("Meal planner error:");
+
+            toast.error(
+                error instanceof Error
+                    ? error.message
+                    : "Failed to save meal planner data",
+            );
+        }
     }, [profile, goals, dietary, structure]);
 
     const hasCustomGoal =
@@ -371,49 +401,29 @@ export function AIMealPlanner() {
                                 Gender
                             </FieldLabel>
 
-                            <Select
-                                aria-label="Gender"
-                                placeholder="Select your gender"
-                                value={profile.gender || null}
-                                onChange={(value) => {
-                                    setProfile({
-                                        ...profile,
-                                        gender: value
-                                            ? (String(value) as Gender)
-                                            : "",
-                                    });
-                                }}
-                            >
-                                <Select.Trigger className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition-all duration-200 hover:border-cyan-500/50 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20">
-                                    <div className="flex min-w-0 flex-1 items-center gap-2.5">
-                                        <FaVenusMars className="shrink-0 text-slate-500" />
-                                        <Select.Value />
-                                    </div>
-
-                                    <Select.Indicator />
-                                </Select.Trigger>
-
-                                <Select.Popover className="border border-slate-700/80 bg-slate-950/95 backdrop-blur-xl shadow-2xl rounded-2xl p-1.5 z-50 min-w-50">
-                                    <ListBox
-                                        aria-label="Gender options"
-                                        className="bg-transparent text-slate-100 space-y-1 [&_.list-box-item]:text-slate-100 [&_.list-box-item[data-focused=true]]:bg-cyan-500/15 [&_.list-box-item[data-focused=true]]:text-cyan-200 [&_.list-box-item[data-selected=true]]:bg-cyan-500/20 [&_.list-box-item[data-selected=true]]:text-cyan-300 [&_.list-box-item]:rounded-xl [&_.list-box-item]:px-3 [&_.list-box-item]:py-2.5 [&_.list-box-item]:transition-colors [&_.list-box-item]:cursor-pointer"
-                                        selectionMode="single"
+                            <div className="flex flex-wrap items-center gap-2">
+                                <span className="text-xs font-semibold text-slate-400 mr-1">
+                                    Quick Select:
+                                </span>
+                                {GENDERS.map((g) => (
+                                    <button
+                                        key={g}
+                                        type="button"
+                                        onClick={() =>
+                                            setProfile({
+                                                ...profile,
+                                                gender: g,
+                                            })
+                                        }
+                                        className={`rounded-xl border px-3.5 py-2 text-xs font-bold transition-all duration-200 active:scale-95 ${profile.gender === g
+                                            ? "border-cyan-400/60 bg-cyan-500/20 text-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.3)] scale-[1.02]"
+                                            : "border-slate-700/60 bg-slate-950/50 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200"
+                                            }`}
                                     >
-                                        {GENDERS.map((g) => (
-                                            <ListBox.Item
-                                                key={g}
-                                                id={g}
-                                                textValue={g}
-                                            >
-                                                <Label className="font-medium text-sm">
-                                                    {g}
-                                                </Label>
-                                                <ListBox.ItemIndicator />
-                                            </ListBox.Item>
-                                        ))}
-                                    </ListBox>
-                                </Select.Popover>
-                            </Select>
+                                        {g}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
                         {/* Current Weight */}
@@ -514,48 +524,29 @@ export function AIMealPlanner() {
                                 Fitness Goal
                             </FieldLabel>
 
-                            <Select
-                                aria-label="Fitness goal"
-                                placeholder="Select your fitness goal"
-                                value={goals.fitnessGoal || null}
-                                onChange={(value) => {
-                                    setGoals({
-                                        ...goals,
-                                        fitnessGoal: value ? String(value) : "",
-                                    });
-                                }}
-                            >
-                                <Select.Trigger className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition-all duration-200 hover:border-rose-500/50 focus:border-rose-400 focus:ring-2 focus:ring-rose-400/20">
-                                    <Select.Value />
-                                    <Select.Indicator />
-                                </Select.Trigger>
-
-                                <Select.Popover className="border border-slate-700/80 bg-slate-950/95 backdrop-blur-xl shadow-2xl rounded-2xl p-1.5 z-50">
-                                    <ListBox
-                                        aria-label="Fitness goal options"
-                                        className="bg-transparent text-slate-100 space-y-1 [&_.list-box-item]:text-slate-100 [&_.list-box-item[data-focused=true]]:bg-rose-500/15 [&_.list-box-item[data-focused=true]]:text-rose-200 [&_.list-box-item[data-selected=true]]:bg-rose-500/20 [&_.list-box-item[data-selected=true]]:text-rose-300 [&_.list-box-item]:rounded-xl [&_.list-box-item]:px-3 [&_.list-box-item]:py-2.5 [&_.list-box-item]:transition-colors [&_.list-box-item]:cursor-pointer"
-                                        selectionMode="single"
+                            <div className="flex flex-wrap items-center gap-2">
+                                <span className="text-xs font-semibold text-slate-400 mr-1">
+                                    Quick Select:
+                                </span>
+                                {FITNESS_GOALS.map((g) => (
+                                    <button
+                                        key={g.value}
+                                        type="button"
+                                        onClick={() =>
+                                            setGoals({
+                                                ...goals,
+                                                fitnessGoal: g.value,
+                                            })
+                                        }
+                                        className={`rounded-xl border px-3.5 py-2 text-xs font-bold transition-all duration-200 active:scale-95 ${goals.fitnessGoal === g.value
+                                            ? "border-rose-400/60 bg-rose-500/20 text-rose-300 shadow-[0_0_14px_rgba(244,63,94,0.3)] scale-[1.02]"
+                                            : "border-slate-700/60 bg-slate-950/50 text-slate-400 hover:border-rose-500/40 hover:text-slate-200"
+                                            }`}
                                     >
-                                        {FITNESS_GOALS.map((g) => (
-                                            <ListBox.Item
-                                                key={g.value}
-                                                id={g.value}
-                                                textValue={g.value}
-                                            >
-                                                <Label className="text-slate-100 font-semibold text-sm">
-                                                    {g.value}
-                                                </Label>
-
-                                                <Description className="text-[11px] text-slate-400 mt-0.5">
-                                                    {g.description}
-                                                </Description>
-
-                                                <ListBox.ItemIndicator />
-                                            </ListBox.Item>
-                                        ))}
-                                    </ListBox>
-                                </Select.Popover>
-                            </Select>
+                                        {g.value}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
                         {/* Activity Level */}
@@ -567,50 +558,29 @@ export function AIMealPlanner() {
                                 Activity Level
                             </FieldLabel>
 
-                            <Select
-                                aria-label="Activity level"
-                                placeholder="Select your activity level"
-                                value={goals.activityLevel || null}
-                                onChange={(value) => {
-                                    setGoals({
-                                        ...goals,
-                                        activityLevel: value
-                                            ? String(value)
-                                            : "",
-                                    });
-                                }}
-                            >
-                                <Select.Trigger className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 px-4 py-3 text-sm text-slate-100 outline-none transition-all duration-200 hover:border-rose-500/50 focus:border-rose-400 focus:ring-2 focus:ring-rose-400/20">
-                                    <Select.Value />
-                                    <Select.Indicator />
-                                </Select.Trigger>
-
-                                <Select.Popover className="border border-slate-700/80 bg-slate-950/95 backdrop-blur-xl shadow-2xl rounded-2xl p-1.5 z-50">
-                                    <ListBox
-                                        aria-label="Activity level options"
-                                        className="bg-transparent text-slate-100 space-y-1 [&_.list-box-item]:text-slate-100 [&_.list-box-item[data-focused=true]]:bg-rose-500/15 [&_.list-box-item[data-focused=true]]:text-rose-200 [&_.list-box-item[data-selected=true]]:bg-rose-500/20 [&_.list-box-item[data-selected=true]]:text-rose-300 [&_.list-box-item]:rounded-xl [&_.list-box-item]:px-3 [&_.list-box-item]:py-2.5 [&_.list-box-item]:transition-colors [&_.list-box-item]:cursor-pointer"
-                                        selectionMode="single"
+                            <div className="flex flex-wrap items-center gap-2">
+                                <span className="text-xs font-semibold text-slate-400 mr-1">
+                                    Quick Select:
+                                </span>
+                                {ACTIVITY_LEVELS.map((a) => (
+                                    <button
+                                        key={a.value}
+                                        type="button"
+                                        onClick={() =>
+                                            setGoals({
+                                                ...goals,
+                                                activityLevel: a.value,
+                                            })
+                                        }
+                                        className={`rounded-xl border px-3.5 py-2 text-xs font-bold transition-all duration-200 active:scale-95 ${goals.activityLevel === a.value
+                                            ? "border-rose-400/60 bg-rose-500/20 text-rose-300 shadow-[0_0_14px_rgba(244,63,94,0.3)] scale-[1.02]"
+                                            : "border-slate-700/60 bg-slate-950/50 text-slate-400 hover:border-rose-500/40 hover:text-slate-200"
+                                            }`}
                                     >
-                                        {ACTIVITY_LEVELS.map((a) => (
-                                            <ListBox.Item
-                                                key={a.value}
-                                                id={a.value}
-                                                textValue={a.value}
-                                            >
-                                                <Label className="text-slate-100 font-semibold text-sm">
-                                                    {a.value}
-                                                </Label>
-
-                                                <Description className="text-[11px] text-slate-400 mt-0.5">
-                                                    {a.description}
-                                                </Description>
-
-                                                <ListBox.ItemIndicator />
-                                            </ListBox.Item>
-                                        ))}
-                                    </ListBox>
-                                </Select.Popover>
-                            </Select>
+                                        {a.value}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
                         {/* Custom Goal */}
@@ -966,5 +936,83 @@ export function AIMealPlanner() {
                 </div>
             </div>
         </main>
+    );
+}
+import { FiCoffee, FiZap } from "react-icons/fi";
+
+export interface MealChartCardProps {
+    title?: string;
+    caloriesTotal?: number;
+    proteinGrams?: number;
+    carbsGrams?: number;
+    fatsGrams?: number;
+    category?: string;
+}
+
+export default function MealChartCardDisplay({
+    title = "High Protein Muscle Fuel",
+    caloriesTotal = 650,
+    proteinGrams = 48,
+    carbsGrams = 62,
+    fatsGrams = 18,
+    category = "Lunch / Recovery",
+}: MealChartCardProps) {
+    return (
+        <div className="w-full bg-[#141416] border border-white/8 rounded-2xl p-5 shadow-xl hover:border-white/20 transition-all duration-300 group">
+            {/* Header Badge */}
+            <div className="flex items-center justify-between pb-3 border-b border-white/6">
+                <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400">
+                    <FiCoffee size={14} />
+                    <span>{category}</span>
+                </div>
+                <div className="flex items-center gap-1 text-xs font-bold text-red-400 bg-red-950/40 border border-red-800/30 px-2.5 py-1 rounded-full">
+                    <FiZap size={12} className="animate-pulse" />
+                    <span>{caloriesTotal} kcal</span>
+                </div>
+            </div>
+
+            {/* Meal Title */}
+            <div className="py-3">
+                <h3 className="font-bold text-white text-base tracking-wide group-hover:text-emerald-400 transition-colors">
+                    {title}
+                </h3>
+                <p className="text-xs text-white/40 mt-1">
+                    Optimized macro distribution for optimal muscle recovery and energy balance.
+                </p>
+            </div>
+
+            {/* Macro Badges Grid */}
+            <div className="grid grid-cols-3 gap-2.5 pt-2">
+                {/* Protein Badge */}
+                <div className="bg-emerald-950/40 border border-emerald-800/40 p-2.5 rounded-xl text-center">
+                    <span className="block text-[11px] text-emerald-300 font-medium uppercase tracking-wider">
+                        Protein
+                    </span>
+                    <span className="text-base font-extrabold text-white mt-0.5 block">
+                        {proteinGrams}g
+                    </span>
+                </div>
+
+                {/* Carbs Badge */}
+                <div className="bg-amber-950/40 border border-amber-800/40 p-2.5 rounded-xl text-center">
+                    <span className="block text-[11px] text-amber-300 font-medium uppercase tracking-wider">
+                        Carbs
+                    </span>
+                    <span className="text-base font-extrabold text-white mt-0.5 block">
+                        {carbsGrams}g
+                    </span>
+                </div>
+
+                {/* Fats Badge */}
+                <div className="bg-blue-950/40 border border-blue-800/40 p-2.5 rounded-xl text-center">
+                    <span className="block text-[11px] text-blue-300 font-medium uppercase tracking-wider">
+                        Fats
+                    </span>
+                    <span className="text-base font-extrabold text-white mt-0.5 block">
+                        {fatsGrams}g
+                    </span>
+                </div>
+            </div>
+        </div>
     );
 }
