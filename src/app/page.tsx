@@ -10,11 +10,12 @@ const projects = [
 
     pages: [
       { name: "Register", link: "/register" },
-      { name: "Meal Planning Assistant", link: "/meal-planning-assistant" },
+      { name: "Meal Planning Assistant", link: "/fitora/meal-planning-assistant" },
     ],
 
     sections: [
-      { name: "Meal Chart", id: "/my-sections/#meal-chart" },
+      { name: "Meal Chart", id: "/my-sections/fitora/meal-chart" },
+      { name: "Advertisement", id: "/my-sections/fitora/advertisement" },
     ],
   },
 ];

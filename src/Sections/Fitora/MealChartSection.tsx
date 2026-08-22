@@ -83,7 +83,7 @@ export default function MealChartSection() {
 
         {/* View Full Meal Plans CTA Link */}
         <Link
-          href="/meal-planning-assistant"
+          href="/fitora/meal-planning-assistant"
           className="inline-flex items-center gap-2 self-start md:self-auto rounded-xl border border-cyan-500/40 bg-cyan-500/15 px-5 py-3 text-xs font-black uppercase tracking-wider text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all duration-300 hover:bg-cyan-500/25 hover:border-cyan-400 active:scale-95"
         >
           <span>View Full Meal Plans</span>
