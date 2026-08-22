@@ -1,4 +1,4 @@
-import MealChartSection from '@/Sections/MealChartSection';
+import MealChartSection from '@/Sections/Fitora/MealChartSection';
 
 const page = () => {
     return (

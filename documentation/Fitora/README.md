@@ -46,8 +46,18 @@ These two sections provide personalized experiences within **Fitora**. The **AI 
   * `POST /api/meal-charts` — Create and save a meal plan.
 * The `GET /api/meal-charts` endpoint requires a `userId` query parameter.
 
+### Client Environment Variables
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+```
+
 ## 19-Aug-26
 
 * Build User Registration page.
-
 * Build Premium Meal Chart section (homepage).
+
+## 20-Aug-26
+
+* Update Nutrition page UI
+* Build Advertisement section (homepage)

@@ -109,13 +109,13 @@ function Section({
     return (
         <section
             className={`card-premium relative overflow-hidden rounded-2xl sm:rounded-3xl border ${teal
-                ? "border-cyan-500/20 bg-slate-900/60 hover:border-cyan-500/35"
+                ? "border-emerald-500/20 bg-slate-900/60 hover:border-emerald-500/35"
                 : "border-rose-500/20 bg-slate-900/60 hover:border-rose-500/35"
                 } backdrop-blur-xl p-4 sm:p-6 md:p-8 transition-all duration-300 shadow-xl shadow-slate-950/40`}
         >
             {/* Dynamic Ambient Background Glows */}
             <div
-                className={`pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full blur-3xl transition-all duration-500 ${teal ? "bg-cyan-500/10" : "bg-rose-500/10"
+                className={`pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full blur-3xl transition-all duration-500 ${teal ? "bg-emerald-500/10" : "bg-rose-500/10"
                     }`}
             />
             <div
@@ -127,7 +127,7 @@ function Section({
                 <div className="flex items-start sm:items-center gap-3 sm:gap-4">
                     <div
                         className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border text-xl sm:h-13 sm:w-13 sm:text-2xl transition-transform duration-300 hover:scale-105 ${teal
-                            ? "border-cyan-400/40 bg-linear-to-br from-cyan-500/20 via-cyan-400/10 to-teal-500/20 text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+                            ? "border-emerald-400/40 bg-linear-to-br from-emerald-500/20 via-emerald-400/10 to-teal-500/20 text-emerald-300 shadow-[0_0_20px_rgba(34,211,238,0.3)]"
                             : "border-rose-500/40 bg-linear-to-br from-rose-500/20 via-rose-400/10 to-amber-500/20 text-rose-400 shadow-[0_0_20px_rgba(244,63,94,0.3)]"
                             }`}
                     >
@@ -137,7 +137,7 @@ function Section({
                     <div className="min-w-0 flex-1">
                         <div
                             className={`mb-1 inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-[0.2em] ${teal
-                                ? "bg-cyan-500/10 text-cyan-300 border border-cyan-500/25"
+                                ? "bg-emerald-500/10 text-emerald-300 border border-emerald-500/25"
                                 : "bg-rose-500/10 text-rose-300 border border-rose-500/25"
                                 }`}
                         >
@@ -160,7 +160,7 @@ function Section({
 
             <Separator
                 className={`mb-5 h-px sm:mb-6 ${teal
-                    ? "bg-linear-to-r from-cyan-500/40 via-teal-500/20 to-transparent"
+                    ? "bg-linear-to-r from-emerald-500/40 via-teal-500/20 to-transparent"
                     : "bg-linear-to-r from-rose-500/40 via-amber-500/20 to-transparent"
                     }`}
             />
@@ -307,10 +307,10 @@ export function AIMealPlanner() {
             <header className="relative mb-6 text-center sm:mb-8 md:mb-12 pt-4 sm:pt-6">
                 <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
                     <div className="bg-grid absolute inset-0 opacity-40" />
-                    <div className="absolute left-1/2 top-0 h-56 w-[85%] -translate-x-1/2 rounded-full bg-linear-to-b from-cyan-400/15 via-teal-500/10 to-transparent blur-3xl" />
+                    <div className="absolute left-1/2 top-0 h-56 w-[85%] -translate-x-1/2 rounded-full bg-linear-to-b from-emerald-400/15 via-teal-500/10 to-transparent blur-3xl" />
                 </div>
 
-                <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3.5 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-transform hover:scale-105">
+                <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-emerald-300 shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-transform hover:scale-105">
                     <FaBolt className="text-amber-300 animate-pulse" size={13} />
                     <span>Fitora AI Engine</span>
                 </div>
@@ -345,7 +345,7 @@ export function AIMealPlanner() {
                         <div className="space-y-2">
                             <FieldLabel
                                 icon={
-                                    <FaCalendarDays className="text-cyan-400" />
+                                    <FaCalendarDays className="text-emerald-400" />
                                 }
                                 color=""
                             >
@@ -380,7 +380,7 @@ export function AIMealPlanner() {
                                         });
                                     }}
                                     placeholder="e.g. 25"
-                                    className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 pl-11 pr-4 py-3 text-sm text-slate-100 outline-none transition-all duration-200 placeholder:text-slate-500 hover:border-cyan-500/50 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                                    className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 pl-11 pr-4 py-3 text-sm text-slate-100 outline-none transition-all duration-200 placeholder:text-slate-500 hover:border-emerald-500/50 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
                                 />
                             </div>
 
@@ -394,7 +394,7 @@ export function AIMealPlanner() {
                         <div className="space-y-2">
                             <FieldLabel
                                 icon={
-                                    <FaVenusMars className="text-cyan-400" />
+                                    <FaVenusMars className="text-emerald-400" />
                                 }
                                 color=""
                             >
@@ -416,8 +416,8 @@ export function AIMealPlanner() {
                                             })
                                         }
                                         className={`rounded-xl border px-3.5 py-2 text-xs font-bold transition-all duration-200 active:scale-95 ${profile.gender === g
-                                            ? "border-cyan-400/60 bg-cyan-500/20 text-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.3)] scale-[1.02]"
-                                            : "border-slate-700/60 bg-slate-950/50 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200"
+                                            ? "border-emerald-400/60 bg-emerald-500/20 text-emerald-300 shadow-[0_0_14px_rgba(34,211,238,0.3)] scale-[1.02]"
+                                            : "border-slate-700/60 bg-slate-950/50 text-slate-400 hover:border-emerald-500/40 hover:text-slate-200"
                                             }`}
                                     >
                                         {g}
@@ -430,7 +430,7 @@ export function AIMealPlanner() {
                         <div className="space-y-2 sm:col-span-2">
                             <FieldLabel
                                 icon={
-                                    <FaWeightScale className="text-cyan-400" />
+                                    <FaWeightScale className="text-emerald-400" />
                                 }
                                 color=""
                             >
@@ -468,10 +468,10 @@ export function AIMealPlanner() {
                                             });
                                         }}
                                         placeholder="e.g. 60"
-                                        className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 pl-11 pr-14 py-3 text-sm text-slate-100 outline-none transition-all duration-200 placeholder:text-slate-500 hover:border-cyan-500/50 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                                        className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 pl-11 pr-14 py-3 text-sm text-slate-100 outline-none transition-all duration-200 placeholder:text-slate-500 hover:border-emerald-500/50 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
                                     />
 
-                                    <span className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-md border border-cyan-500/20">
+                                    <span className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
                                         KG
                                     </span>
                                 </div>
@@ -491,8 +491,8 @@ export function AIMealPlanner() {
                                                 })
                                             }
                                             className={`rounded-xl border px-3.5 py-2 text-xs font-bold transition-all duration-200 active:scale-95 ${profile.weight === w
-                                                ? "border-cyan-400/60 bg-cyan-500/20 text-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.3)] scale-[1.02]"
-                                                : "border-slate-700/60 bg-slate-950/50 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200"
+                                                ? "border-emerald-400/60 bg-emerald-500/20 text-emerald-300 shadow-[0_0_14px_rgba(34,211,238,0.3)] scale-[1.02]"
+                                                : "border-slate-700/60 bg-slate-950/50 text-slate-400 hover:border-emerald-500/40 hover:text-slate-200"
                                                 }`}
                                         >
                                             {w} kg
@@ -720,7 +720,7 @@ export function AIMealPlanner() {
                     {/* Meals Per Day */}
                     <div className="space-y-3">
                         <FieldLabel
-                            icon={<FaListOl className="text-cyan-400" />}
+                            icon={<FaListOl className="text-emerald-400" />}
                             color=""
                         >
                             Meals Per Day
@@ -757,7 +757,7 @@ export function AIMealPlanner() {
                                         });
                                     }}
                                     placeholder="e.g. 4"
-                                    className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 pl-11 pr-4 py-3 text-sm text-slate-100 outline-none transition-all duration-200 placeholder:text-slate-500 hover:border-cyan-500/50 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                                    className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 pl-11 pr-4 py-3 text-sm text-slate-100 outline-none transition-all duration-200 placeholder:text-slate-500 hover:border-emerald-500/50 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
                                 />
                             </div>
 
@@ -776,8 +776,8 @@ export function AIMealPlanner() {
                                             })
                                         }
                                         className={`rounded-xl border px-3.5 py-2 text-xs font-bold transition-all duration-200 active:scale-95 ${structure.mealsPerDay === m
-                                            ? "border-cyan-400/60 bg-cyan-500/20 text-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.3)] scale-[1.02]"
-                                            : "border-slate-700/60 bg-slate-950/50 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200"
+                                            ? "border-emerald-400/60 bg-emerald-500/20 text-emerald-300 shadow-[0_0_14px_rgba(34,211,238,0.3)] scale-[1.02]"
+                                            : "border-slate-700/60 bg-slate-950/50 text-slate-400 hover:border-emerald-500/40 hover:text-slate-200"
                                             }`}
                                     >
                                         {m} meals
@@ -786,8 +786,8 @@ export function AIMealPlanner() {
                             </div>
 
                             {structure.mealsPerDay > 0 && (
-                                <span className="inline-flex items-center gap-1.5 rounded-xl border border-cyan-400/40 bg-cyan-500/15 px-3.5 py-2 text-xs font-black text-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.25)] sm:ml-auto">
-                                    <FaCheck size={12} className="text-cyan-400" />
+                                <span className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-400/40 bg-emerald-500/15 px-3.5 py-2 text-xs font-black text-emerald-300 shadow-[0_0_14px_rgba(34,211,238,0.25)] sm:ml-auto">
+                                    <FaCheck size={12} className="text-emerald-400" />
                                     {structure.mealsPerDay} meal
                                     {structure.mealsPerDay === 1 ? "" : "s"} / day
                                 </span>
@@ -800,7 +800,7 @@ export function AIMealPlanner() {
                         <div className="space-y-2">
                             <FieldLabel
                                 icon={
-                                    <FaHeartCrack className="text-cyan-400" />
+                                    <FaHeartCrack className="text-emerald-400" />
                                 }
                                 color=""
                             >
@@ -824,7 +824,7 @@ export function AIMealPlanner() {
                                             ),
                                         })
                                     }
-                                    className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 pl-11 pr-4 py-3 text-sm text-slate-100 outline-none transition-all duration-200 placeholder:text-slate-500 hover:border-cyan-500/50 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                                    className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 pl-11 pr-4 py-3 text-sm text-slate-100 outline-none transition-all duration-200 placeholder:text-slate-500 hover:border-emerald-500/50 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
                                 />
                             </div>
 
@@ -839,7 +839,7 @@ export function AIMealPlanner() {
                         <div className="space-y-2">
                             <FieldLabel
                                 icon={
-                                    <FaPlateWheat className="text-cyan-400" />
+                                    <FaPlateWheat className="text-emerald-400" />
                                 }
                                 color=""
                             >
@@ -861,7 +861,7 @@ export function AIMealPlanner() {
                                                 e.target.value.slice(0, 50),
                                         })
                                     }
-                                    className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 pl-11 pr-4 py-3 text-sm text-slate-100 outline-none transition-all duration-200 placeholder:text-slate-500 hover:border-cyan-500/50 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+                                    className="w-full rounded-2xl border border-slate-700/70 bg-slate-950/70 pl-11 pr-4 py-3 text-sm text-slate-100 outline-none transition-all duration-200 placeholder:text-slate-500 hover:border-emerald-500/50 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
                                 />
                             </div>
 
@@ -907,10 +907,10 @@ export function AIMealPlanner() {
                 {/* Generate Button Floating Footer */}
                 <div className="sticky bottom-4 z-30 sm:bottom-6">
                     <div className="card-premium relative overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-700/70 bg-slate-900/85 backdrop-blur-xl p-4 sm:p-5 shadow-[0_10px_40px_rgba(0,0,0,0.7)] flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <div className="pointer-events-none absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-cyan-500/10 blur-2xl" />
+                        <div className="pointer-events-none absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-emerald-500/10 blur-2xl" />
 
                         <div className="flex items-center gap-3.5 text-center sm:text-left">
-                            <div className="hidden sm:flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-cyan-400/30 bg-cyan-500/10 text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+                            <div className="hidden sm:flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-emerald-400/30 bg-emerald-500/10 text-emerald-300 shadow-[0_0_20px_rgba(34,211,238,0.2)]">
                                 <FaDrumstickBite size={22} />
                             </div>
 
@@ -927,7 +927,7 @@ export function AIMealPlanner() {
                         <Button
                             onPress={handleGenerate}
                             size="lg"
-                            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-linear-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-size-[200%_200%] font-black uppercase tracking-wider text-slate-950 shadow-[0_0_30px_rgba(34,211,238,0.45)] hover:shadow-[0_0_45px_rgba(34,211,238,0.7)] transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2 text-sm"
+                            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-linear-to-r from-emerald-400 via-teal-300 to-emerald-400 bg-size-[200%_200%] font-black uppercase tracking-wider text-slate-950 shadow-[0_0_30px_rgba(34,211,238,0.45)] hover:shadow-[0_0_45px_rgba(34,211,238,0.7)] transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2 text-sm"
                         >
                             <FaWandMagicSparkles size={18} />
                             <span>Generate Meal Chart</span>

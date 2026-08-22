@@ -1,4 +1,4 @@
-import { AIMealPlanner } from '@/Components/AIMealPlanner';
+import { AIMealPlanner } from '@/Components/Fitora/AIMealPlanner';
 
 
 const page = () => {
