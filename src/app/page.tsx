@@ -15,6 +15,7 @@ const projects = [
 
     sections: [
       { name: "Meal Chart", id: "/my-sections/fitora/meal-chart" },
+      { name: "Hydration Tracker", id: "/my-sections/fitora/hydration-tracker" },
       { name: "Advertisement", id: "/my-sections/fitora/advertisement" },
     ],
   },

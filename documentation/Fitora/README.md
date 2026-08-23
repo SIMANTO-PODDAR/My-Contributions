@@ -61,3 +61,9 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 
 * Update Nutrition page UI
 * Build Advertisement section (homepage)
+
+## 23-Aug-26
+
+* Add an interactive Water Hydration progress ring widget on the Nutrition Dashboard(\my-sections\fitora\hydration-tracker)
+* Replace temp userId with authenticated session userId
+* Add advertisement schema and API route
