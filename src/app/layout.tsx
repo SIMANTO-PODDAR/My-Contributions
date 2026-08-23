@@ -13,7 +13,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className="dark"
     >
-      <body className="min-h-full flex flex-col bg-white dark:bg-black text-black dark:text-white container mx-auto">
+      <body className="min-h-full flex flex-col bg-white dark:bg-black text-black dark:text-white container mx-auto p-4">
         {children}
         <Toaster />
       </body>
