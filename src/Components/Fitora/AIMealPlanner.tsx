@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { useCallback, useState } from "react";
 import type { ReactNode } from "react";
 import toast from "react-hot-toast";
@@ -188,7 +189,9 @@ function FieldLabel({
 }
 
 export function AIMealPlanner() {
-    const TEMP_USER_ID = "507f1f77bcf86cd799439011"; // TODO: Remove fake userId after auth implementation
+    const { data: session } = authClient.useSession();
+    const user = session?.user;
+    const USER_ID = user?.id;
 
     const [profile, setProfile] = useState<UserProfileData>(
         EMPTY_FORM.profile,
@@ -261,7 +264,7 @@ export function AIMealPlanner() {
         };
 
         const payload = {
-            userId: TEMP_USER_ID,
+            userId: USER_ID,
             ...formData,
         };
 
@@ -927,7 +930,7 @@ export function AIMealPlanner() {
                         <Button
                             onPress={handleGenerate}
                             size="lg"
-                            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-linear-to-r from-emerald-400 via-teal-300 to-emerald-400 bg-size-[200%_200%] font-black uppercase tracking-wider text-slate-950 shadow-[0_0_30px_rgba(34,211,238,0.45)] hover:shadow-[0_0_45px_rgba(34,211,238,0.7)] transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2 text-sm"
+                            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-linear-to-r from-emerald-400 via-emerald-400 to-emerald-400 bg-size-[200%_200%] font-black uppercase tracking-wider text-slate-950 shadow-[0_0_30px_rgba(34,211,238,0.45)] hover:shadow-[0_0_45px_rgba(34,211,238,0.7)] transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2 text-sm"
                         >
                             <FaWandMagicSparkles size={18} />
                             <span>Generate Meal Chart</span>

@@ -96,10 +96,10 @@ export default function RegistrationPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 bg-slate-950 relative overflow-hidden font-sans text-slate-100">
+        <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 relative overflow-hidden font-sans text-slate-100">
             {/* Background Glow Effects */}
-            <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-cyan-500/10 blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-emerald-500/10 blur-[120px] pointer-events-none" />
+            <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full" />
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
