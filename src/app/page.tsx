@@ -11,12 +11,14 @@ const projects = [
     pages: [
       { name: "Register", link: "/register" },
       { name: "Meal Planning Assistant", link: "/fitora/meal-planning-assistant" },
+      { name: "Theme Hub (Research)", link: "https://simanto-poddar-themehub.vercel.app" },
     ],
 
     sections: [
       { name: "Meal Chart", id: "/my-sections/fitora/meal-chart" },
       { name: "Hydration Tracker", id: "/my-sections/fitora/hydration-tracker" },
       { name: "Advertisement", id: "/my-sections/fitora/advertisement" },
+      { name: "Coaches and Trainers", id: "/my-sections/fitora/Coaches-and-Trainers" },
     ],
   },
 ];
