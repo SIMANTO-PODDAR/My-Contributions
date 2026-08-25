@@ -94,4 +94,4 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 
   * Created the meal details modal.
   * Displays detailed information such as **name, ingredients, calories, and description**.
-  * Designed the modal following Fitora's existing UI style.
+  * Designed the modal following Fitora's existing UI style. 
