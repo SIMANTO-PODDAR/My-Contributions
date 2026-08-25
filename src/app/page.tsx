@@ -11,6 +11,7 @@ const projects = [
     pages: [
       { name: "Register", link: "/register" },
       { name: "Meal Planning Assistant", link: "/fitora/meal-planning-assistant" },
+      { name: "Meals", link: "/fitora/meals" },
       { name: "Theme Hub (Research)", link: "https://simanto-poddar-themehub.vercel.app" },
     ],
 
