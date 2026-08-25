@@ -14,6 +14,8 @@ The **Advertisement** section displays fitness-related product advertisements ba
 * **Yoga** → Yoga Mat, Yoga Block, Yoga Accessories
 * **Weight Training** → Dumbbells, Resistance Bands, Gym Gloves
 
+## 3. Healthy Meals Page (`/meals`)
+
 ## Overview
 
 These two sections provide personalized experiences within **Fitora**. The **AI Meal Planning Assistant** helps users generate personalized meal suggestions, while the **Advertisement** section displays exercise-related fitness product advertisements based on the user's selected activity.
@@ -94,4 +96,4 @@ NEXT_PUBLIC_API_URL=http://localhost:5000/api
 
   * Created the meal details modal.
   * Displays detailed information such as **name, ingredients, calories, and description**.
-  * Designed the modal following Fitora's existing UI style. 
+  * Designed the modal following Fitora's existing UI style.
