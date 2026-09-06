@@ -20,6 +20,7 @@ const projects = [
       { name: "Hydration Tracker", id: "/my-sections/fitora/hydration-tracker" },
       { name: "Advertisement", id: "/my-sections/fitora/advertisement" },
       { name: "Coaches and Trainers", id: "/my-sections/fitora/Coaches-and-Trainers" },
+      { name: "Payment Transaction", id: "https://drive.google.com/file/d/1SMZ4llPlW4lxYa1Yf_RBTCv7rQoEvmhL/view" },
     ],
   },
 ];
